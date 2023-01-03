@@ -8,12 +8,18 @@
 import UIKit
 
 class WeatherViewController: UIViewController, UISearchBarDelegate {
+    
+    var background : UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(named: "image-11")
+        return imageView
+    }()
 
     var searchBar : UISearchBar = {
        let search = UISearchBar()
         search.placeholder = "Search Weather of City"
         search.translatesAutoresizingMaskIntoConstraints = false
-        search.backgroundColor = .darkGray
+        search.searchTextField.textColor = .white
         return search
     }()
     
@@ -21,6 +27,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "cloud.drizzle")
+        imageView.tintColor = .label
         return imageView
     }()
     
@@ -29,6 +36,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         label.text = "22"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 60, weight: .bold)
+        label.textColor = UIColor(named: "weatherColor")
         return label
     }()
     
@@ -37,6 +45,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         label.text = "°C"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 60, weight: .medium)
+        label.textColor = UIColor(named: "weatherColor")
         return label
     }()
     
@@ -45,19 +54,19 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         label.text = "Kanpur"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 30, weight: .medium)
+        label.textColor = UIColor(named: "weatherColor")
         return label
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //searchBar.searchBarStyle = UISearchBar.Style.default
         searchBar.placeholder = " Search..."
-        searchBar.sizeToFit()
-        searchBar.isTranslucent = false
         searchBar.delegate = self
-      // navigationItem.titleView = searchBar
+        //searchBar.barTintColor = .black
+        searchBar.barStyle = .black
 
+        view.addSubview(background)
         view.addSubview(searchBar)
         view.addSubview(imageView)
         view.addSubview(temp)
@@ -66,6 +75,11 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         
         applyConstraints()
        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        background.frame = view.bounds
     }
     
     func  applyConstraints(){
@@ -98,7 +112,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         
         let cityConstraints = [
         
-            city.topAnchor.constraint(equalTo: temp.bottomAnchor, constant: 10),
+            city.topAnchor.constraint(equalTo: temp.bottomAnchor, constant: 5),
             city.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
             
         ]
@@ -107,5 +121,9 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         NSLayoutConstraint.activate(degreeConstraints)
         NSLayoutConstraint.activate(tempConstraints)
         NSLayoutConstraint.activate(cityConstraints)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchBar.text)
     }
 }
