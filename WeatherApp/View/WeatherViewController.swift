@@ -27,7 +27,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "cloud.drizzle")
-        imageView.tintColor = .label
+        imageView.tintColor = UIColor(named: "weatherColor")
         return imageView
     }()
     
@@ -122,8 +122,43 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         NSLayoutConstraint.activate(tempConstraints)
         NSLayoutConstraint.activate(cityConstraints)
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text)
+   
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let check = searchBar.text , !check.isEmpty {
+           
+            APICaller.shared.fetchWeatherDetails(with: check){ [self] results in
+                    switch results{
+                    case .success(let weatherResponse):
+                        DispatchQueue.main.async { [self] in
+                            self.temp.text = String(format: "%.2f", weatherResponse.main.temp)
+                            self.city.text = check
+                            setWeatherImage(weatherResponse.weather[0].main)
+                        }
+                       
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                    
+                }
+           
+        }
+    }
+    func setWeatherImage(_ modal : String){
+        var imageToShow = "sun.max"
+        switch modal{
+        case "Clear":
+            imageToShow = "sun.max.fill"
+        case "Rain":
+            imageToShow = "cloud.rain"
+        case "Smoke":
+            imageToShow = "smoke.fill"
+        case "Clouds":
+            imageToShow = "cloud.sun.fill"
+        default:
+            imageToShow = "sun.dust"
+        }
+        
+        imageView.image = UIImage(systemName: imageToShow)
     }
 }

@@ -16,6 +16,7 @@
 		8C1A187928EB4661006908D4 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1A187828EB4661006908D4 /* WeatherResponse.swift */; };
 		8C52518C2925FDC9000B9BD2 /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C52518B2925FDC9000B9BD2 /* Weather.storyboard */; };
 		8C52518E2925FDD6000B9BD2 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52518D2925FDD6000B9BD2 /* WeatherViewController.swift */; };
+		8CCA721C296404B90091C22B /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA721B296404B90091C22B /* APICaller.swift */; };
 		8CE1E5EB292552BA00D20850 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1E5EA292552BA00D20850 /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		8C1A187828EB4661006908D4 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		8C52518B2925FDC9000B9BD2 /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
 		8C52518D2925FDD6000B9BD2 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		8CCA721B296404B90091C22B /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		8CE1E5EA292552BA00D20850 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,7 @@
 		8C1A186028E9B590006908D4 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				8CCA721A296404A10091C22B /* Resources */,
 				8CE1E5E92925529F00D20850 /* ViewModel */,
 				8C1A187628E9B5A8006908D4 /* View */,
 				8C1A187528E9B5A0006908D4 /* Modal */,
@@ -93,6 +96,14 @@
 				8C52518D2925FDD6000B9BD2 /* WeatherViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8CCA721A296404A10091C22B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8CCA721B296404B90091C22B /* APICaller.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		8CE1E5E92925529F00D20850 /* ViewModel */ = {
@@ -178,6 +189,7 @@
 				8C1A186628E9B590006908D4 /* ViewController.swift in Sources */,
 				8C52518E2925FDD6000B9BD2 /* WeatherViewController.swift in Sources */,
 				8CE1E5EB292552BA00D20850 /* WeatherViewModel.swift in Sources */,
+				8CCA721C296404B90091C22B /* APICaller.swift in Sources */,
 				8C1A186228E9B590006908D4 /* AppDelegate.swift in Sources */,
 				8C1A186428E9B590006908D4 /* SceneDelegate.swift in Sources */,
 				8C1A187928EB4661006908D4 /* WeatherResponse.swift in Sources */,
